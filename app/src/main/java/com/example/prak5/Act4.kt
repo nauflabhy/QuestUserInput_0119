@@ -25,7 +25,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-
+import androidx.compose.material3.Button
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.dimensionResource
 
 @Composable
 fun FormDataDiri(modifier: Modifier = Modifier) {
@@ -45,12 +47,13 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally) {
         OutlinedTextField(
             value = textNama,
+            onValueChange = { textNama = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             modifier = Modifier.width(250.dp),
             label = { Text(text = "Nama") },
 
-    }
+        )}
     Row {
         gender.forEach { item ->
             Row(modifier = Modifier.selectable(
@@ -67,7 +70,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
         }
 
     }
-    OutlineTextField(
+    OutlinedTextField(
         value = textAlamat,
         singleLine = true,
         modifier = Modifier.width(250.dp),
@@ -78,41 +81,35 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
     )
     HorizontalDivider(
         modifier = Modifier.padding(
-            bottom =
-                dimesionalResource(id = R.dimen.mypaddinggweh2),
-                top = dimensionalResource(
-                    id = R.dimen.mypaddinggweh2
-                )
+            bottom = dimensionResource(id = R.dimen.mypaddinggweh2),
+            top = dimensionResource(id = R.dimen.mypaddinggweh2)
         ),
-        thickness = dimensionalResource(id = R.dimen.mypaddinggweh3),
+        thickness = dimensionResource(id = R.dimen.mypaddinggweh3),
         color = Color.DarkGray
     )
     Button(
-        modifier = Modifier.fillMaxWidth( fraction = 1f ),
+        modifier = Modifier.fillMaxWidth(fraction = 1f),
         // the button is enabled when the user make a selection
-        enable = textAlamat.isNotEmpty(),
+        enabled = textAlamat.isNotEmpty(),
         onClick = {
-            nama=textNama
-            jenis=textJK
-            alamat=textAlamat
+            nama = textNama
+            jenis = textJK
+            alamat = textAlamat
         }
     ) {
         Text(stringResource(R.string.submit))
     }
     HorizontalDivider(
         modifier = Modifier.padding(
-            bottom =
-                dimesionalResource(id = R.dimen.mypaddinggweh2),
-                top = dimensionalResource(
-                    id = R.dimen.mypaddinggweh2
-                )
+            bottom = dimensionResource(id = R.dimen.mypaddinggweh2),
+            top = dimensionResource(id = R.dimen.mypaddinggweh2)
         ),
-        thickness = dimensionalResource(id = R.dimen.mypaddinggweh3),
+        thickness = dimensionResource(id = R.dimen.mypaddinggweh3),
         color = Color.DarkGray
     )
     ElevatedCard (
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-        colors = CardDefaults.cardColours(containerColor = Color.Black),
+        colors = CardDefaults.cardColors(containerColor = Color.Black),
         modifier = Modifier
             .height(100.dp)
             .width(300.dp)
